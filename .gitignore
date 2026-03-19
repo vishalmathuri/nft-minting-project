@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env
+
+# Hardhat files
+artifacts/
+cache/
+
+# Logs
+logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Build folders
+dist/
+build/
+
+# VS Code
+.vscode/
