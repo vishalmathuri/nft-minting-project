@@ -1,16 +1,16 @@
-# NFT Minting API (Polygon Amoy Testnet)
+# NFT Minting DApp (Polygon Amoy Testnet)
 
 ## 📌 Overview
 
-This project implements a minimal NFT minting system using:
+This project implements a full-stack NFT minting system:
 
-* Solidity (ERC-721)
-* Hardhat (development & testing)
-* Node.js + Express (backend API)
-* ethers.js (blockchain interaction)
-* Polygon Amoy Testnet (deployment)
+* **Smart Contract:** Solidity (ERC-721)
+* **Backend:** Node.js + Express (API)
+* **Blockchain Interaction:** ethers.js v6
+* **Frontend:** React.js (professional UI with MetaMask support)
+* **Network:** Polygon Amoy Testnet
 
-The system allows minting NFTs via an API endpoint that interacts with a deployed smart contract.
+Users can mint NFTs via a backend API or directly through the frontend DApp.
 
 ---
 
@@ -19,13 +19,18 @@ The system allows minting NFTs via an API endpoint that interacts with a deploye
 ### 🔹 Smart Contract
 
 * ERC-721 compliant NFT
+
 * Maximum supply: **5 NFTs**
+
 * Configurable mint price (default: **1 MATIC**)
+
 * Base URI support for metadata
+
 * Owner-only functions:
 
   * Update mint price
   * Withdraw contract balance
+
 * Security:
 
   * Reentrancy protection
@@ -60,6 +65,28 @@ Mint an NFT to a specified wallet address.
 
 ---
 
+### 🔹 Frontend DApp (Bonus)
+
+* Connect MetaMask wallet automatically
+* Input wallet address manually
+* Mint NFTs via UI
+* Shows success/failure messages
+* Displays Polygonscan transaction link:
+
+```jsx
+<a
+  href={`https://amoy.polygonscan.com/tx/${txHash}`}
+  target="_blank"
+  rel="noreferrer"
+>
+  View on Polygonscan
+</a>
+```
+
+* Professional UI with gradient background, styled buttons, input, and card layout
+
+---
+
 ## 🏗️ Project Structure
 
 ```
@@ -72,6 +99,12 @@ nft-minting-project/
 │   ├── server.js
 │   ├── package.json
 │   └── .env
+├── frontend/
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── api.js
+│   │   └── index.js
+│   ├── package.json
 ├── README.md
 ├── .env.example
 ```
@@ -82,8 +115,8 @@ nft-minting-project/
 
 ### 1️⃣ Clone the repository
 
-```
-git clone <your-repo-url>
+```bash
+git clone https://github.com/vishalmathuri/nft-minting-project.git
 cd nft-minting-project
 ```
 
@@ -93,15 +126,22 @@ cd nft-minting-project
 
 #### Backend:
 
-```
+```bash
 cd backend
 npm install
 ```
 
 #### Smart Contract:
 
+```bash
+cd ../contract
+npm install
 ```
-cd contract
+
+#### Frontend:
+
+```bash
+cd ../frontend
 npm install
 ```
 
@@ -109,7 +149,7 @@ npm install
 
 ### 3️⃣ Configure environment variables
 
-Create a `.env` file inside `/backend`:
+Create `.env` in `/backend`:
 
 ```
 RPC_URL=your_polygon_amoy_rpc_url
@@ -122,7 +162,7 @@ PRIVATE_KEY=your_wallet_private_key
 
 ### ▶️ Start Backend Server
 
-```
+```bash
 cd backend
 node server.js
 ```
@@ -133,14 +173,17 @@ Server will run on:
 http://localhost:5000
 ```
 
----
+### ▶️ Start Frontend
 
-### ▶️ Test API
+```bash
+cd frontend
+npm start
+```
 
-**Using curl:**
+Open in browser:
 
 ```
-curl -X POST http://localhost:5000/mint -H "Content-Type: application/json" -d "{\"walletAddress\":\"0xYourWalletAddress\"}"
+http://localhost:3000
 ```
 
 ---
@@ -157,19 +200,16 @@ curl -X POST http://localhost:5000/mint -H "Content-Type: application/json" -d "
 
 Polygon Amoy Testnet
 
----
-
 ### 🔹 Deployment
 
-```
+```bash
+cd contract
 npx hardhat run scripts/deploy.js --network amoy
 ```
 
----
-
 ### 🔹 Run Tests
 
-```
+```bash
 npx hardhat test
 ```
 
@@ -177,24 +217,30 @@ npx hardhat test
 
 ## 🔐 Security Practices
 
-* Private keys stored securely in `.env`
-* Input validation for wallet addresses
-* Reentrancy protection in contract
-* Owner-only access control for sensitive operations
-* Proper error handling in API
+* Private keys stored in `.env`
+* Wallet address validation in API and frontend
+* Reentrancy protection in smart contract
+* Owner-only functions protected
+* Proper error handling in backend and frontend
 
 ---
 
 ## 🧪 Testing
 
-Smart contract tests include:
+Smart contract tests cover:
 
-* Successful minting
+* Successful mint
 * Maximum supply enforcement
 * Payment validation
 * Owner-only access control
-* Mint price update validation
+* Mint price updates
 * Withdraw functionality
+
+Frontend tests (manual):
+
+* Connect MetaMask
+* Mint NFT
+* Show transaction on Polygonscan
 
 ---
 
@@ -218,14 +264,16 @@ Successful mint transaction:
 
 ## 📦 Deliverables
 
-* Smart Contract (Solidity)
+* Solidity Smart Contract
 * Hardhat Test Suite
 * Node.js Backend API
-* Deployed Contract on Polygon Testnet
-* API-based NFT Minting
+* React Frontend DApp
+* Deployed Contract on Polygon Amoy Testnet
 
 ---
 
 ## 👨‍💻 Author
 
-Vishal Mathuri
+**Vishal Mathuri**
+
+---
